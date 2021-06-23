@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Wacky Wally Widget Company</h1>
+
+	<p>Enter a product code and check if it is a valid pattern.</p>
+
+	<p>Product code: <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Check"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// Write a program that asks the user to enter a product code for
+// a product manufactured by the Wacky Wally Widget Company.  Your
+// program should inspect the product code and respond 
+// with "Valid" or "Not Valid" 
+//
+// Valid product codes are of the pattern 999-AAA where "999" is any
+// sequence of three digits and "AAA" is any sequence of three alpha
+// characters.  The Wacky Wally Widget Company treats upper and lower-case
+// letters in their product codes as the same.  That is, "AAA-999" is valid,
+// and Aaa-999 is valid, and aaa-999 is valid and they all refer
+// to the same product.
+//
+
+function isValidProductCode(code) {
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+	
+	code= code.toUpperCase();
+
+	if(code.length !=7){
+		return "Not Valid"
+	}
+	if(code[0] != parseFloat(code[0])){
+		return "Not Valid"
+
+	}
+	if(code[1] !=parseFloat(code[1])){
+		return "Not Valid"
+
+	}
+	if(code[2] !=parseFloat(code[2])){
+		return "Not Valid"
+
+	}
+
+	if(code[3] != "-"){
+		return "Not Valid"
+	}
+
+	//variable alpha holds the last three characters of the sttring cold
+	var alpha = code.slice(4,7);
+
+	if(alpha < "AAA" || alpha > "ZZZ"){
+		return "Not Valid";
+	}
+
+	return "Valid";
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+$('#btn_1').click(function(){
+	var productcode = $('#textEntered1').val();
+	$('#textDisplayed1').html(isValidProductCode(productcode));; 
+
+})
+</script>
+</html>

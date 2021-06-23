@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Philadelphia Climate Data</h1>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Show the rainfall data"></p>
+	
+	<ol id="listOutput1"></ol> 	
+	
+	<p><input type="button" class="btn btn-primary" id="btn_2" value="Max rainfall">
+	
+	<div id="textDisplayed2"></div> <br>
+
+	<p><input type="button" class="btn btn-primary" id="btn_3" value="Min rainfall"></p>
+	
+	<div id="textDisplayed3"></div> <br>
+	
+	<p>
+	Pick the climate data you want to show: 
+		<select id="pickone">
+			<option value="high">High Temperature</option>
+			<option value="low">Low Temperature</option>
+			<option value="dryDays">Dry days</option>
+			<option value="snowDays">Snow Days</option>
+			<option value="rainfall">Rainfall</option>
+		</select>
+	</p>
+	
+	<p><input type="button" class="btn btn-primary" id="btn_4" value="Show The Climate Data"></p>
+	
+	<ol id="listOutput2"></ol> 	
+	
+
+</body>
+<script>
+//
+// Here is an array of climate data for Philadelphia.
+// It's original source is here: https://github.com/michaelx/climate
+// It shows average high temp, low temp, dryDays, snowDays, and rainfall.  Temperatures are in Celcius.
+
+//how would you describe the scope of this variable?
+
+//how many dimensions does it have?
+
+//assume that Months are represented by a number. That is, January is month zero, December is month 11.
+
+let avgPhillyData = [{"high":7,"low":-3,"dryDays":15,"snowDays":6,"rainfall":81.8},{"high":8,"low":-3,"dryDays":16,"snowDays":6,"rainfall":60},{"high":13,"low":1,"dryDays":15,"snowDays":4,"rainfall":106},{"high":19,"low":6,"dryDays":13,"snowDays":1,"rainfall":85},{"high":24,"low":11,"dryDays":15,"snowDays":0,"rainfall":90.5},{"high":29,"low":17,"dryDays":16,"snowDays":0,"rainfall":94},{"high":31,"low":20,"dryDays":16,"snowDays":0,"rainfall":114.1},{"high":30,"low":20,"dryDays":18,"snowDays":0,"rainfall":90.9},{"high":27,"low":16,"dryDays":17,"snowDays":0,"rainfall":109.2},{"high":21,"low":9,"dryDays":19,"snowDays":0,"rainfall":85.5},{"high":15,"low":4,"dryDays":17,"snowDays":1,"rainfall":72.1},{"high":9,"low":-1,"dryDays":16,"snowDays":4,"rainfall":90}];
+
+
+function displayRainfall() {
+// It's useful to be able to loop through an array and generate an HTML list   
+// or an HTML table.               
+
+	// here we are emptying the content of listOutput1.
+	$("#listOutput1").html(""); //look! We are putting an empty string in to the inner html of the tag
+	
+	for(let i=0; i < avgPhillyData.length;i++){
+		$("#listOutput1").append("<li>" + avgPhillyData[i]["rainfall"] + "</li>");
+	}
+}
+
+function displayData(key) {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$("#listOutput2").html("");
+for(let i = 0; i < avgPhillyData.length; i++){
+	$("#listOutput2").append("<li>"+avgPhillyData[i][key]+"</li>");
+}
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function getMaxRainfall() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+let answer = avgPhillyData[0]["rainfall"];
+for(let i = 0; i < avgPhillyData.length; i++){
+	if(avgPhillyData[i]["rainfall"] > answer){
+		answer=avgPhillyData[i]["rainfall"];
+	}
+}
+return answer
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+	
+}
+
+
+function getMinRainfall() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+let answer = avgPhillyData[0]["rainfall"];
+for(let i = 0; i < avgPhillyData.length; i++){
+	if(avgPhillyData[i]["rainfall"] < answer){
+		answer=avgPhillyData[i]["rainfall"];
+	}
+}
+return answer
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////	
+}
+
+
+$('#btn_1').click(function(){
+	displayRainfall();
+})
+
+
+$('#btn_2').click(function(){
+	$('#textDisplayed2').html(getMaxRainfall());
+})
+
+$('#btn_3').click(function(){
+	$('#textDisplayed3').html(getMinRainfall());
+})
+
+$('#btn_4').click(function(){
+	let key = $("#pickone").val(); //get the value from the select tag list
+	displayData(key);
+})
+
+</script>
+</html>

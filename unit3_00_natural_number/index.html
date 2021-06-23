@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+	<!-- **************************************************************************************** -->
+	<!-- *                                                                                      * -->
+	<!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+	<!-- *                                                                                      * -->
+	<!-- **************************************************************************************** -->
+
+	<h1>Natural Number Test</h1>
+
+	<p>This page will test your input to determine if it is a natural number.
+		Enter a value and press the Calculate button. </p>
+
+	<p>Please provide a value: <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+
+	<div id="textDisplayed1"></div>
+
+</body>
+<script>
+//
+// In mathematics, a "natural number" is a counting number.  The numbers
+// 1, 2, 3, 4, and so on are all counting numbers.
+//
+// Zero, negative numbers, and numbers with fractional parts are not natural
+// numbers.
+//
+// Write a function called isNaturalNumber().  The function will take one
+// argument.  If the arguement is a natural number, then return true. Otherwise,
+// the isNaturalNumber() function should return false.
+//
+// To solve this problem you will need the parseInt() function that is
+// part of JavaScript.
+//
+// The parseInt() function takes one parameter, and will return the value
+// of that parameter, expressed as an integer.
+//
+
+function isNaturalNumber(x) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+//check to see if the number is negative "or" non-number (text)
+
+if(isNaN(x) || x <= 0){
+	return false;
+}
+
+//return ture: check and see if the interger part of x does not equal to x 
+if(parseInt(x) != x){
+	console.log(parseInt(x));
+	return false;
+}
+
+return true;
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$('#btn_1').click(function(){
+
+	var x = $('#textEntered1').val();
+
+	if (isNaturalNumber(x)){
+		$('#textDisplayed1').html(x + ' is a natural number. ');
+	} else {
+		$('#textDisplayed1').html(x + ' is NOT a natural number. ');
+	}
+
+
+})
+
+</script>
+</html>

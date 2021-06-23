@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>USA States Data</h1>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Show the state codes"></p>
+	
+	<select id="selectOutput1"></select> <br><br>	
+	
+	<p><input type="button" class="btn btn-primary" id="btn_2" value="Eastmost longitude">
+	
+	<div id="textDisplayed2"></div> <br>
+	
+	<p><input type="button" class="btn btn-primary" id="btn_3" value="Name and latitude of the southernmost state"></p>
+	
+	<div id="textDisplayed3"></div> <br>
+	
+	<p><input type="button" class="btn btn-primary" id="btn_4" value="Westmost longitude"></p>
+	
+	<div id="textDisplayed4"></div> <br>
+
+	<p><input type="button" class="btn btn-primary" id="btn_5" value="Average longitude"></p>
+	
+	<div id="textDisplayed5"></div> <br>
+
+	
+</body>
+<script>
+//
+//  Go see the USA state data found here: http://misdemo.temple.edu/states
+//
+//  In each function, write a getJSON command to retrieve the data.
+//  Specify what you want done with the data inside the callback function of the 
+//  getJSON method.
+//
+//  Take note of this basic structure:
+//
+//  $.getJSON("",function(result){
+		// the variable named result has 
+		// block level scope inside the callback function.
+		// it is a good practice to display result in console.log		
+//		console.log(result);
+//	});
+
+
+
+function displayStatecodes() {
+
+	// It's useful to be able to loop through an array and generate options in an HTML select tag   
+
+	// here we are emptying the content of selectOutput1.
+	$("#selectOutput1").html(""); //look! We are putting an empty string in to the inner html of the tag
+	
+	//now we are making a call to an external data source
+	$.getJSON("http://misdemo.temple.edu/states",function(result){
+		// the variable named result has 
+		// block level scope inside the callback function.
+		// it is a good practice to display result in console.log
+		console.log(result);
+		for(let i=0; i < result.length;i++){
+			$("#selectOutput1").append("<option>" + result[i]["state"] + "</option>");
+		}
+	});
+}
+
+function displayEastmost(){
+
+	$.getJSON("http://misdemo.temple.edu/states",function(result){
+		console.log(result);
+		let answer = result[0]["longitude"];
+		
+		for(let i=0; i < result.length;i++){
+			if (answer < result[i]["longitude"]){
+				answer = result[i]["longitude"];
+				
+				console.log(result[i]["state"]);
+				console.log(answer);
+			}
+		}
+		$('#textDisplayed2').html(answer);
+	});
+	
+}
+
+
+function displaySouthmost() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$.getJSON("http://misdemo.temple.edu/states",function(result){
+		console.log(result);
+		let answer = result[0]["latitude"];
+		let answer2="";
+		
+		for(let i=0; i < result.length;i++){
+			if (answer > result[i]["latitude"]){
+				answer = result[i]["latitude"];
+				answer2=answer+", " + result[i]["state"];
+				
+				console.log(result[i]["state"]);
+				console.log(answer);
+			}
+		}
+		$('#textDisplayed3').html(answer);
+	});
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+
+function displayWestmost() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$.getJSON("http://misdemo.temple.edu/states",function(result){
+		console.log(result);
+		let answer = result[0]["longitude"];
+		let answer3="";
+		
+		for(let i=0; i > result.length;i++){
+			if (answer < result[i]["longitude"]){
+				answer = result[i]["longitude"];
+				answer3=answer+", " + result[i]["state"];
+				
+				console.log(result[i]["state"]);
+				console.log(answer);
+			}
+		}
+		$('#textDisplayed4').html(answer);
+	});
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function displayAvgLongitude() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$.getJSON("http://misdemo.temple.edu/states",function(result){
+		console.log(result);
+		let answer = result[0]["latitude"];
+		let answer4="";
+		
+		for(let i=0; i > result.length;i++){
+			if (answer < result[i]["latitude"]){
+				answer = result[i]["latitude"];
+				answer4=answer+", " + result[i]["state"];
+				
+				console.log(result[i]["state"]);
+				console.log(answer);
+			}
+		}
+		$('#textDisplayed5').html(answer);
+	});
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+$('#btn_1').click(function(){
+	displayStatecodes();
+})
+
+
+$('#btn_2').click(function(){
+	displayEastmost();
+})
+
+$('#btn_3').click(function(){
+	displaySouthmost();
+})
+
+$('#btn_4').click(function(){
+	displayWestmost();
+})
+
+$('#btn_5').click(function(){
+	displayAvgLongitude();
+})
+
+</script>
+</html>

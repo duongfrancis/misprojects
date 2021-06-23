@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+	<!-- **************************************************************************************** -->
+	<!-- *                                                                                      * -->
+	<!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+	<!-- *                                                                                      * -->
+	<!-- **************************************************************************************** -->
+
+	<h1>Hot Dog Cookout Planner</h1>
+
+	<p>How many people are coming to the cookout? <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+
+	<div id="textDisplayed1"></div>
+
+
+</body>
+
+<script>
+//
+// Assume hot dogs come in packages of 10, and hot dog buns come in packages of 8.
+// Write a program that calculates the number of packages of hot dogs and the
+// number of packages of hot dog buns needed for a cookout, with the minimum amount
+// of leftovers. The program should ask the user for the number of people attending
+// the cookout. Assume each person will eat 1 hotdog.
+//
+// The program should calculate:
+// - The minimum number of packages of hot dogs required
+// - The minimum number of packages of hot dog buns required
+// - The number of hot dogs that will be left over
+// - The number of hot dog buns that will be left over
+//
+// All of that information should be reported in a detailed message that looks like this: 
+//   We will need X1 packages of hot dogs and will have X2 leftover.
+//   We will need Y1 packages of buns and will have Y2 leftover.
+//
+// So.. if you had 11 guests the message would would look like this:
+//  We will need 2 packages of hot dogs and will have 9 leftover.
+//  We will need 2 packages of buns and will have 5 leftover.
+//
+// Finally, if the user enters anything that is not a natural number, the program should report a
+// message that looks like this:
+//
+// Bad data. Try again.
+//
+//
+
+// FUNCTIONS START HERE
+
+//this function takes a number with decimal precision and rounds up 
+//to the next highest integer.
+function roundUp(x){
+	return Math.ceil(x);
+} //end roundUp
+
+
+//this function returns true if x is a Natural Number.  Otherwise it returns false.
+function isNaturalNumber(x) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+if(isNaN(x) || x <= 0){
+	return false;
+}
+
+if(parseInt(x) != x){
+	return false;
+}
+
+return true;
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+} //end isNaturalNumber
+
+
+// packagesNeeded - This function should take a number of people, 
+// divide it by a number of items per package
+// and round up.  Notice that the parameter itemsPerPack
+// lets you use this one function for both hot dogs (which come 10 in a pack)
+// and hot dog rolls (that come in packs of 8)
+function packagesNeeded(numberOfPeople, itemsPerPack) {
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+return roundUp(numberOfPeople/itemsPerPack);
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+
+// leftovers() - This function computes left overs.  That is, determine
+// the number of individual items you would need to buy, and subtract that
+// from the number of guests. 
+function leftovers(numberOfPeople, itemsPerPack) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var how_many_items_did_you_buy = itemsPerPack * packagesNeeded(numberOfPeople, itemsPerPack);
+return how_many_items_did_you_buy - numberOfPeople;
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+
+function getMessageHotDogs(numberOfPeople){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+//assign proper values to packagesofHotDogs and leftoverhotdogs
+var packagesOfHotDogs = packagesNeeded(numberOfPeople,10);
+var leftoverHotDogs = leftovers(numberOfPeople,10);
+
+
+
+return 'We will need ' + packagesOfHotDogs + ' packages of hot dogs and will have ' + leftoverHotDogs + ' left over.';
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+function getMessageBuns(numberOfPeople){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+var packagesOfBuns = packagesNeeded(numberOfPeople,8);
+var leftoverBuns = leftovers(numberOfPeople,8);
+
+
+return 'We will need ' + packagesOfBuns + ' packages of buns and will have ' + leftoverBuns + ' left over.';
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function getMessage(numberOfPeople){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+//wrap lines 183-185 in an if statement that checks if numberofPeople is a natural number| else condition should be a proper bad data message
+
+if(!isNaturalNumber(numberOfPeople)){
+	return "Bad data. Try again."}
+	 else {
+	var message1 = getMessageHotDogs(numberOfPeople);
+	var message2 = getMessageBuns(numberOfPeople);
+	return message1 + "<br>" + message2;
+
+}
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+$('#btn_1').click(function(){
+
+  var numberOfPeople = $('#textEntered1').val();
+
+  var message = getMessage(numberOfPeople);
+  
+  $('#textDisplayed1').html(message);
+
+})
+
+
+</script>
+
+</html>

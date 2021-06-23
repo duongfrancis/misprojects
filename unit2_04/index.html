@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * No changes needed here														        * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Tip, Tax, Total</h1>
+
+	<p>Enter the amount of a meal purchased then press the button to display the total including an 18% tip and 7% sales tax.</p>
+
+	<p>What is the amount of the meal purchased? <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate Total with tip and sales tax"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// Write a program that calculates the total amount of a meal purchased at a 
+// restaurant. The program should ask the user to enter the charge for the 
+// food, then call a function that will calculate the total adding in an 
+// 18 percent tip and 7 percent sales tax. 
+//
+
+function orderTotal(mealPrice) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+//turn the input into a float number
+mealPrice=parseFloat(mealPrice)
+var tip = mealPrice * 0.18;
+var salesTax = mealPrice * .07;
+
+return mealPrice + tip + salesTax;
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$('#btn_1').click(function(){
+
+	var amountOfPurchase = $('#textEntered1').val();
+
+	var total = orderTotal(amountOfPurchase);
+	$('#textDisplayed1').html('The total payment for the order is $' + total + ' including an 18% tip and 7% sales tax.');
+
+})
+
+
+</script>
+</html>

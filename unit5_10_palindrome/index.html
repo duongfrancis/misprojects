@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Palindrome Word Checker</h1>
+
+	<p>Enter a word: <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Check"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// A palindrome word ia a word that is spelled the same backwards
+// and forwards.
+//
+// Some valid palindromes:
+// Racecar
+// madam
+// Kayak
+//
+// Notice that in the above examples the case of the letters 
+// does not matter ... Racecar is still a palindrome word even though
+// the "R" and "r" are diferent characters.  
+//
+// Write a program that checks to see if a word is a palindrome.
+// You can be very liberal in your definition of a "word" here...
+// a word is just any pattern of characters.  So, abcdef and abccba are 
+// both words.  The word abcdef is not a palidrome.  
+// The word abccba is a palindrome.
+//
+// The isPalindrome function you write should return a string.  The string
+// should be either "Palindrome" or "Not a palindrome"
+
+function isPalindrome(text) {
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+	var output="";
+	for(var i = 0; i<text.length; i++){
+		output=text[i] + output;
+	}
+	if(output != text){
+		return "Not a palindrome"
+	}
+	if(output = text){
+		return "Palindrome"
+
+	}
+	return text;
+
+	
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+$('#btn_1').click(function(){
+	var text = $('#textEntered1').val();
+	$('#textDisplayed1').html(isPalindrome(text));; 
+
+})
+</script>
+</html>

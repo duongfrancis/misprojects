@@ -1,0 +1,20 @@
+.gnome_navigation{
+    background-color: darkgray;
+    color: white;
+    min-height: 300px;
+    padding: 20px;
+}
+.gnome_main{
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px;
+    min-height: 300px;
+}
+label{
+    width: 25%;
+    padding-right: 16px;
+    padding-bottom: 8px;
+}
+img{
+    max-width:50%;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	
+	<h1>Distance Travelled</h1>
+	
+	<p>Click the button to determine the distance travelled over time.</p>
+
+	<p>What is the speed of the car in miles per hour <input type="text" id="textEntered1"></p>
+	<p>How many hours has the car been travelling? <input type="text" id="textEntered2"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+	
+	<div id="textDisplayed1"></div>
+</body>
+<script>
+//
+// The distance a vehicle travels can be calculated as follows:
+//	
+//		distance=speed X time 
+//
+// For example, if a car travels at the speed of 40 miles per hour for three hours, 
+// the distance traveled is 120 miles. Write a program that asks the user for the speed of a
+// vehicle (in miles per hour) and the time it has travelled in hourly increments. 
+//
+// Express the distane travelled as a list of comma separated values.
+//
+// For example:
+// 40,80,120,
+//
+// Define a function that uses a loop to produce the output as shown above.
+//
+// The function should take two parameters as input, a variable named "speed" and a variable named 
+// "miles" and produce a string of comma separated values.
+//
+// Notice that in the example given there a comma at the end of the list.  This is expected in this code.  
+//
+// If a user provides any input that is not a natural number, then the function should
+// return the error message: "Bad data. Try again." 
+//
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Supporting functions start here.                                            //
+/////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Supporting functions end here.                                            //
+/////////////////////////////////////////////////////////////////////////////////
+
+
+
+function distanceTravelled(speed,time){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+if (isNaN(speed)){
+	return "Bad data. Please try again. "
+}
+if (isNaN(time)){
+	return "Bad data. Please try again. "
+}
+else{
+var result= "";
+for(var i=1;i<=time;i++){
+var distance = i * speed
+result = result + distance + ",";
+}
+
+	return result
+}	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+$('#btn_1').click(function(){
+	
+	var speed = $('#textEntered1').val();
+	var hours = $('#textEntered2').val();
+
+	var message = distanceTravelled(speed, hours);
+	$('#textDisplayed1').html(message);
+
+})
+
+
+</script>
+</html>

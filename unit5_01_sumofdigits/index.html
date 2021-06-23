@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Sum Of Digits</h1>
+
+	<p>Enter a series of digits with no space in between them.  (e.g. 12345)</p>
+
+	<p>Your digits: <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// Write a program that asks the user to enter a series of single-digit numbers 
+// with nothing separating them. The program should call a function that returns 
+// the sum of all the single digit numbers in the string. 
+//
+// For example, if the user enters 2514, the method should return 12, 
+// which is the sum of 2, 5, 1, and 4.
+//
+// Hint...use the parseInt() method.
+// Another Hint... you do not need to use indexOf to solve this problem.
+// Yet Another Hint... use the isNaturalNumber function provided in this start file
+// to perform your error trapping. 
+//
+// Steps:
+//	1) Create a variable called digitSum and initialize it to 0;
+//	2) Create a for loop that starts at zero and loops once for 
+//		each character in the number using the .length property.
+//	3) Remember that you can parse a string is an array and that you can 
+//		access any individual character in an array (i.e. numberPassed[2] is 
+//		the third element/third character in the string.  Add this digit
+//		to digitSum after using parseInt() to convert it to an acutal number.
+//	4) Return digitSum.
+//
+// If the user enters anything that is not a Natural Number, return "Bad data. Try again."
+
+function sumOfDigits(numberPassed) {
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+	if(!isNaturalNumber(numberPassed)){
+		return "Bad data. try again."
+	}
+	var digitsum = 0;
+//the loop goes here
+for(var i = 0; i < numberPassed.length; i++){
+
+
+  digitsum = parseInt(numberPassed[i]) + digitsum;
+}
+return digitsum;
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function isNaturalNumber(x) {
+	if (isNaN(x) || x <= 0 ){
+		return false;
+	}
+
+	if (parseInt(x) != x){
+		return false;
+	}
+
+	return true;
+}
+
+$('#btn_1').click(function(){
+	var numx = $('#textEntered1').val();
+	$('#textDisplayed1').html(sumOfDigits(numx));; 
+
+})
+</script>
+</html>

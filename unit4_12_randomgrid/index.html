@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+	<style> table, tr, td{border:1px solid black; border-collapse: collapse; padding: 2px;} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	
+	<h1>Random 10 x 10 Grid</h1>
+	
+	<p>Click the "Go" button to create a 10 x 10 table filled with random mumbers.  
+	If the number is greater than 50, the number will be made bold using the HTML
+	&lt;b&gt; tag.</p>
+
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Go"></p>
+	
+	<div id="textDisplayed1"></div>
+</body>
+<script>
+//
+// Write a program that generates a 10x10 HTML table filled with randomly selected numbers 
+// between 1 and 100 (inclusive).  
+//
+// This start file already contains a function called getRandomInt that will return a 
+// random number between 1 and x.  For example: getRandomInt(6) will return a random number
+// between 1 and 6.
+//
+// If the number is greater than 50, the number should be made bold using the HTML
+// <b> tag.
+//
+// Use parameters to that this program should be easily modified to generate any 
+// RxC grid.  For example: 3x2, or 7x9, or 5x5.
+
+// this function returns a random integer between 1 and x (inclusive)
+var getRandomInt = function(x){
+	var result = Math.ceil((Math.random() * x));
+	return result;
+}
+
+
+
+function buildCell(x){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var result = "";
+
+if(x > 50){
+	result = "<b>" + x + "</b>"
+
+} else {
+	result = x;
+}
+	return result;
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function test1(){
+	for(var i =10; i<=22; i=i +3 ){
+		 console.log(i);
+
+	}
+}
+
+
+function buildGrid(numrows, numcols){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+//you need two loops: the outer loop gets the job done fo rows; the inner loop gets the job done for cells inside each row
+var result = "<table>"
+	for (var r = 1; r <= numrows; r++){
+		result = result + "<tr>";
+		//write the code to generate the content of <td> tags
+		for(var c = 1; c <= numcols; c++){
+result = result + "<td>"
+var cellvalue = getRandomInt(100);
+result=result + buildCell(cellvalue);
+result = result + "</td>"
+		}
+			result = result + "</tr>";
+	}
+	result=result + "</table>"
+	return result;
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+$('#btn_1').click(function(){
+	
+	var htmltable = buildGrid(10,10);
+	$('#textDisplayed1').html(htmltable);
+
+})
+
+
+</script>
+</html>

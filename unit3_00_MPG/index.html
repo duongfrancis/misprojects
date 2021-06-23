@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+	<!-- **************************************************************************************** -->
+	<!-- *                                                                                      * -->
+	<!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+	<!-- *                                                                                      * -->
+	<!-- **************************************************************************************** -->
+
+	<h1>Miles Per Gallon (MPG)</h1>
+
+	<p>Enter the number of miles driven and the gas used to drive that distance then press the button to display the number of miles per gallon (MPG) you are getting.</p>
+
+	<p>How many miles have you driven? <input type="text" id="textEntered1"></p>
+	<p>How much gas have you used driving that far? <input type="text" id="textEntered2"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate MPG"></p>
+
+	<div id="textDisplayed1"></div>
+
+</body>
+<script>
+//
+// A car's miles-per-gallon (MPG) can be calculated with the following formula:
+//
+//	MPG=Milesdriven / Gallonsofgasused
+//
+// Write a function that accepts two parameters: mile and gas.
+// The function should return a string that reports on the mileage of the car.
+// For example:
+//
+// Your car is getting 30.25 miles per gallon.
+//
+// Use the toFixed() function to format the result to only 2 decimal places.
+//
+// If the value of miles is not a number, then the function should return:
+// Bad data. Miles must be a number.
+//
+// If the value of miles is zero or less, then the function should return:
+// Bad data. Miles must be greater than zero.
+//
+// If the value of Gas is not a number, then the function should return:
+// Bad data. Gas must be a number.
+//
+// If the value of gas is zero or less, then the function should return:
+// Bad data. Gas must be greater than zero.
+//
+
+function calculateMPG(miles, gas) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+//error trapping
+
+if (isNaN(miles)){
+	return "bad data. miles should be a numeric value "
+}
+if (miles <= 0 ) {
+	return "bad data. miles should be greater tha zero."
+}
+if (isNaN(gas)){
+	return "bad data. gas should be a numeric value."
+}
+if (gas <= 0 ) {
+	return "bad data. gas should be greater tha zero."
+}
+	var mpg=miles/gas
+	return "your car is getting " + mpg.toFixed(2) + " miles per gallon"
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$('#btn_1').click(function(){
+
+	var milesDriven = $('#textEntered1').val();
+	var gasUsed = $('#textEntered2').val();
+
+	var message = calculateMPG(milesDriven, gasUsed);
+	$('#textDisplayed1').html(message);
+
+})
+
+</script>
+</html>

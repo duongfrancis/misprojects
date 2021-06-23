@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Miles Per Gallon</h1>
+
+	<p>Enter your information into the following text boxes.</p>
+
+	<p>Miles driven?             <input type="text" id="textEntered1"></p>
+	<p>Gas used?   <input type="text" id="textEntered2"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate MPG"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// A car's miles-per-gallon (MPG) can be calculated with the following formula:
+//
+//	MPG=Milesdriven/Gallonsofgasused
+//
+// Write a program that asks the user for the number of miles driven and the 
+// gallons of gas used. It should then call a function to calculate and return 
+// the car's MPG and display the result.
+//
+
+function calculateMPG(miles, gas) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var answer = miles /gas;
+answer = answer.toFixed(2);
+return answer;
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$("#btn_1").click(function(){
+	var milesDriven = $('#textEntered1').val();
+	var gasUsed = $('#textEntered2').val();
+
+	$("#textDisplayed1").html('You car is getting ' + calculateMPG(milesDriven, gasUsed) + ' MPG.');
+});
+
+
+</script>
+</html>

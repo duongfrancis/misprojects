@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * When you are ready, you will want to change the value of the input tag named "key".  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div id="div-quote" class="col-md-8" style="border-style: solid;">
+				<h1>Get a quote</h1>
+				<div id="quote"></div>
+				<br><br>
+				<input type="button" id="btn_get_quote" value="Get an inspirational quote" class="btn btn-primary">
+				<br><br>
+				<input type="button" id="btn_show_form" value="Send it to a friend" class="btn btn-primary">
+				<br><br>
+			</div>
+			<div id="div-sms" class="col-md-8" style="border-style: solid;">
+				<h1>Send an SMS message</h1>
+				<form id="frm_send_text">
+					<input type="hidden" name="key" value="textbelt">
+					<label for="phone">Phone:</label> 
+					<input type="text" id="phone" name="phone"><br>
+					<label for="message">Message:</label>
+					<input type="text" id="message" name="message"><br><br>
+					<label></label>
+					<input type="button" id="btn_send_text" value="Send the text" class="btn btn-primary">
+					<br><br>
+					<input type="button" id="btn_show_quote" value="Go back to quotes" class="btn btn-primary">
+					<br><br>
+				</form>
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+//
+// For information about how to use this API, see: 
+// Here is a API key you can use:
+//
+// 64ae32fcd02cd89ccdbeeb466bb4ffd82089d3bcuQcxhMzb2VARlDmmc2SYkemyk
+//
+// Please don't abuse it.
+//
+//
+
+// these are commands that run right away!
+
+$("#div-quote").show();
+$("#div-sms").hide();
+
+
+//supporting function
+function get_the_quote(){ 
+
+	// issue a GET against https://misdemo.temple.edu/dailyquote/
+	// and put the quote into the #quote div
+	// and also put the quote in the #message input tag
+	$.getJSON("https://misdemo.temple.edu/dailyquote/ ",function(data){ 
+console.log(data);
+$("#quote").html(data["quote"]);
+$("#quote").addClass("alert alert-primary");
+$("#Message").val(data["quote"]);
+	});
+}; //end send the text
+
+
+
+function send_the_text(){
+
+	// first serialize the form that holds the API key, phone number and text message.
+	var serial = $("#frm_send_text").serialize();
+	// send the text message using https://textbelt.com/text
+	$.post("https://textbelt.com/text", serial,function(data){
+		console.log(data);
+	});
+	
+}; //end send the text
+
+//click handler
+
+$('#btn_get_quote').click(function(){
+	get_the_quote();
+});
+
+$('#btn_send_text').click(function(){
+	send_the_text();
+});
+
+$('#btn_show_form').click(function(){
+  //show sms form and hide quote
+  $("#div-quote").hide();
+  $("#div-sms").show();
+});
+
+$('#btn_show_quote').click(function(){
+	//hide sms form and show the quote
+	$("#div-sms").hide();
+	$("#div-quote").show();
+
+});
+
+</script>
+</html>

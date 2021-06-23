@@ -1,0 +1,12 @@
+table, th, td, form {
+    border: 1px solid black;
+}
+#content{
+    background-color: white;
+    width: 600px;
+    padding: 10px;
+}
+
+body{
+    background-color: gray;
+}

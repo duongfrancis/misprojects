@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body>                                                 * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Sum of cubes difference</h1>
+
+	<p>Enter a number into the following text box.</p>
+
+	<p>Your number: <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// The sum of the cubes of the first ten natural numbers is,
+// 1^3+2^3+...+10^3=3025
+//
+// The cube of the sum of the first ten natural numbers is,
+// (1+2+...+10)^3=166375
+//
+// Find the difference between these two numbers
+// for any natural number provided by the user.
+//
+// Hence the difference between the sum of the cubes of the 
+// first ten natural numbers and the cube of the sum is 166375−3025=163350.
+//
+// If the user enters a decimal number, convert it to an 
+// integer using the parseInt() function.
+//
+// If the user enters zero or a negative number, then your 
+// function should return the message "Bad data.  Try again."
+//
+// If the user enters a non-numeric value, your function 
+// should return the message "Bad data.  Try again."
+//
+
+
+
+function sumOfCubes(x) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+ //declare var sum
+ //write a loop: inside the loop you need the cubic value of the iterator added to the sum variable
+ //oustude the loop have a return line
+ //example of using math.pow: 2^6 --> math.pow(2.6)
+ var result=0
+ 
+ for(var i=1;i<=x;i++) { //i++ = i=i+1
+
+ 
+	result=result+(i*i*i);
+ }
+ 	//var sumcubes = parseInt(sumcubes) + i;
+ 
+return result;
+
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+
+function cubeOfSum(x) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+ //declare a var sum 
+ //write a loop: insdei the loop you need the value of the iteration added to the sum variable
+ //outside the loop: have a return line
+	 var result = 0
+
+	 
+	 for(var i = 1;i <= x;i ++){
+		 result = result+i;
+
+	 }
+
+   return result * result * result;
+
+ 
+
+ 
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+
+
+
+function calculateSumCubesDifference(x) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+ //decalre var result
+ //parseint the input
+ //do the error trapping
+	// get the value of sum of cubes and cibe of sums (you have to invoke the earlier functions
+	//return the subtraction value
+	if(isNaN(x)||parseInt(x)!=x||x<=0){
+		return "Bad Data. Try again"
+	}
+	var answer = cubeOfSum(x) - sumOfCubes(x);
+	return answer;
+
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$("#btn_1").click(function(){
+	var x = $('#textEntered1').val();
+
+	$("#textDisplayed1").html(calculateSumCubesDifference(x));
+});
+
+
+</script>
+</html>

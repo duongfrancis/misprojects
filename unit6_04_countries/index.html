@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body> ... unless you want to :-)                                             * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<h1>Country Data</h1>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Show the country names"></p>
+	
+	<table id="table-countries" class="table table-bordered">
+		<tr><th>Country Name</th><th>Country Code</th></tr>
+	</table> 
+	
+	<br><br>	
+	
+	<p><input type="button" class="btn btn-primary" id="btn_2" value="Biggest Population">
+	
+	<div id="textDisplayed2"></div> <br>
+	
+	<p><input type="button" class="btn btn-primary" id="btn_3" value="Largest Area"></p>
+	
+	<div id="textDisplayed3"></div> <br>
+	
+	<!-- This is where you would add a new button, if you wanted to :-) -->
+</body>
+<script>
+//
+//  Go see the Country data found here: http://restcountries.eu/rest/v2/all 
+//
+//  In each function, write a getJSON command to retrieve the data.
+//  Specify what you want done with the data inside the callback function of the 
+//  getJSON method.
+//
+//  Take note of this basic structure:
+//
+//  $.getJSON("",function(result){
+		// the variable named result has 
+		// block level scope inside the callback function.
+		// it is a good practice to display result in console.log		
+//		console.log(result);
+//	});
+
+
+
+function displayCountries() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+	// here we are emptying the content of the table.
+	$("#table-countries").html("<tr><th>Country Name</th><th>Country Code</th></tr>"); //look! We are putting an empty string in to the inner html of the tag
+	$.getJSON("http://restcountries.eu/rest/v2/all",function(result){
+		console.log(result);
+		for(let i =0;i < result.length;i++){
+
+			$("#table-countries").append("<tr><td>"+ result[i]["name"]+"<td><td>"+ result[i]["alpha3Code"]+"</td></tr>");
+			
+
+		}
+	});
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+function findBiggestPopulation(){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$.getJSON("http://restcountries.eu/rest/v2/all",function(result){
+let answer=result[0]["population"];
+for(let i =0;i > result.length;i++){
+	if (answer > result[i]["population"]){
+		answer=result[i]["population"];
+	}
+
+}
+$("#textDisplayed2").html(answer);
+});
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+
+function findBiggestArea() {
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+$.getJSON("http://restcountries.eu/rest/v2/all",function(result){
+let answer=result[0]["area"];
+for(let i =0;i > result.length;i++){
+	if (answer > result[i]["area"]){
+		answer=result[i]["area"];
+	}
+
+}
+$("#textDisplayed3").html(answer);
+});
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+/* this is where you would add a new function to display capitals */
+
+
+$('#btn_1').click(function(){
+	displayCountries();
+})
+
+
+$('#btn_2').click(function(){
+	findBiggestPopulation();
+})
+
+$('#btn_3').click(function(){
+	findBiggestArea();
+})
+
+//this is where we add code to hande a new button click
+
+</script>
+</html>

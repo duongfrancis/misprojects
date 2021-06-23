@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+
+<body>
+	<!-- **************************************************************************************** -->
+	<!-- *                                                                                      * -->
+	<!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+	<!-- *                                                                                      * -->
+	<!-- **************************************************************************************** -->
+
+	<h1>Money Counting Game</h1>
+
+	<p>Enter a number next to each kind of coin.
+		 Try to make the total value of the coins equal one dollar.
+		 Then press the button to check your work.
+		 If the coin value is exactly one dollar, you win!
+		 Otherwise you lose.</p>
+
+ <p>How many pennies? <input type="text" id="textEntered1"></p>
+ <p>How many nickles? <input type="text" id="textEntered2"></p>
+ <p>How many dimes? <input type="text" id="textEntered3"></p>
+ <p>How many quarters? <input type="text" id="textEntered4"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+
+	<div id="textDisplayed1"></div>
+
+</body>
+<script>
+//
+// Create a change-counting game that gets the user to enter the number of coins
+// required to make exactly one dollar. The program should accept from the user
+// the number of pennies, nickels, dimes, and quarters. The program calls a function
+// to calculate the total, and return a string message.
+//
+// If the total value of the coins entered is equal to one
+// dollar, the function should return a string that congratulates the user for
+// winning the game.
+//
+// This is the EXACT confirmation text you should use:
+//
+// You win. That is exacly $1.00!
+//
+// Otherwise, the function sould return a string indicating
+// whether the amount entered was more than or less than one dollar.
+// Examples of this message appear below.  Please follow the
+// pattern of the message exacly.
+//
+// You lose. 0.48 is less than $1.00
+// You lose. 1.23 is more than $1.00
+//
+// If the user provides any piece of data that is not numeric, the function
+// should return this is the EXACT error message:
+//
+// Bad data. Please try again.
+//
+function addUpChange(numberOfPennies, numberOfNickles, numberOfDimes, numberOfQuarters) {
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+//error trapping: none of the paermeters should be expressed in text
+//calculationn: estimate total ammount based on the values of the four inputing parameters
+//return answer: use a stakced if statement
+if (isNaN(numberOfPennies)){
+	return "Bad data. Please try again. "
+}
+	if (isNaN(numberOfNickles)){
+		return "Bad data. Please try again. "
+	}
+if (isNaN(numberOfDimes)){
+	return "Bad data. Please try again. "
+	}
+if (isNaN(numberOfQuarters)){
+	return "Bad data. Please try again. "
+	}
+var totalofchange = numberOfNickles*5/100 + numberOfPennies*1/100 + numberOfDimes*10/100 + numberOfQuarters*25/100
+
+	if(totalofchange>1){
+		return " You lose. "+ totalofchange+" is greater than $1.00 "
+
+	} else if (totalofchange<1){
+		return " You lose. "+ totalofchange+" is less than $1.00 "
+
+	}else {
+		return " You Win. Your total is exactly $1.00! "
+	}
+
+
+	
+	
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+}
+
+$('#btn_1').click(function(){
+
+	var numberOfPennies = $('#textEntered1').val();
+	var numberOfNickles = $('#textEntered2').val();
+	var numberOfDimes = $('#textEntered3').val();
+	var numberOfQuarters = $('#textEntered4').val();
+
+	var message = addUpChange(numberOfPennies, numberOfNickles, numberOfDimes, numberOfQuarters);
+	$('#textDisplayed1').html(message);
+
+});
+
+</script>
+
+</html>

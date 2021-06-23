@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <body></body> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	
+	<h1>Calories Burned</h1>
+	
+	<p>Click the button to determine the calories burned over time.</p>
+    
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Calculate"></p>
+	
+	<div id="textDisplayed1"></div>
+</body>
+<script>
+//
+// Running on a particular treadmill you burn 4.2 calories per minute. Write a
+// program that uses a loop to display the number of calories burned after 
+// 10, 15, 20, 25, and 30 minutes.
+//
+// Your function should take an input, a variable named "iterations", and produce a 
+// string of comma separated values.
+//
+// If the iterations parameter has the value of 5, then your function's 
+// output should look like this:
+// 42,63,84,105,126
+//
+// Notice that, in this exercise, it is not OK to have a comma at the end of the output.
+// 
+// That means that we will need a conditional statement *inside* our loop to determine
+// if the comma should be added or not.
+
+
+function caloriesBurned(iterations){
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+	var result = ""; //notice that result is a string.
+	
+	var i=0;
+	for (var i = 0; i < iterations; ) {
+		var cal = (10 + i*5)*4.2;
+		console.log(cal);
+		result = result + cal; //this is concatenation.  NOT addition. 
+		if (i < ( iterations - 1)){
+			result = result + ",";
+		}
+		i = i+1;
+	}
+
+	return result;
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+}
+
+$('#btn_1').click(function(){
+	
+	$('#textDisplayed1').append(caloriesBurned(5)); 
+
+})
+
+
+</script>
+</html>

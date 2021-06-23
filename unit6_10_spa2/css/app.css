@@ -1,0 +1,24 @@
+body{
+	background-color: #343a40;
+}
+label{
+    margin-top:10px;
+}
+.container-fluid{
+	background-color: #fff;
+	min-height: 100px;
+}
+.btn-default{
+    /* BS4 changed the appearance of btn-default on anchor tags.
+      I liked the old way better... so that's
+      what I am making happen here.  */
+    background-color: #CCC;
+    color: black;
+}
+.btn {
+    /*make text wrap nicely in buttons */
+    white-space:normal;
+}
+
+
+

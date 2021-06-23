@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>MIS2402 Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 References -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- Link to FontAwesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- Link to image for the favicon -->
+    <link rel="icon" href="images/TU100x100.png">
+</head>
+
+<body>
+
+<!-- Top Navigation Bar -->
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+    <!-- Logo -->
+      <a class ="navbar-brand" href="index.html">
+          <img alt="MIS2402 - TU Logo" src="images/TU100x100.png" style="width:40px;">
+          &nbsp;&nbsp;MIS2402
+      </a>
+
+    <!-- Toggler Icon for responsiveness -->
+    <button id="toggle-icon" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <!--Menu sets on the left -->
+        <ul class="navbar-nav mr-auto">
+        </ul>
+    <!--Menu sets on the right -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a id="link_logout" class="nav-link" href="#"><i class="fa fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br><br><br><br>
+
+<!--Start container for BS4 (Bootstrap 4) formatting-->
+<div class="container-fluid">
+
+    <div class="row">
+    <div class="col-md-2"></div>
+
+		<div class="col-md-8 content-wrapper " id="div-login" style="display: none;">
+                <form id='frm_login'>
+				<label for="username">User name:</label>
+				<input type="text" name="username" id="username" class="form-control" >
+				<label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" >
+                <br>
+				<div class="text-center">
+				<input type="button" value="Login" name="btn_login" id="btn_login" class="btn btn-primary" style="font-size:2em;width:100%;" >
+                </div>
+                <br>
+                <div id='login_message'>
+                </div>
+			</form>
+		</div>
+
+        <div class="col-md-8 content-wrapper " id="div-sample" style="display: none;">
+            <h1>Sample Div</h1>
+        </div>
+
+        <div class="col-md-8 content-wrapper " id="div-list" style="display: none;">
+            <h1>To-do list</h1>
+            <input type="button" id="btn_get_tasks" value="Refresh Task List" class="btn btn-primary">
+            <br><br>
+            <ul id="tasklist"></ul>
+            <br><br>				
+            <input type="button" id="btn_show_add" value="Add a Task" class="btn btn-primary">
+            <br><br>        
+        </div>
+
+        <div class="col-md-8 content-wrapper " id="div-add" style="display: none;">
+            <h1>Add Task</h1>
+            <form id="frm_todo">
+                <input type="hidden" id="task_owner" name="task_owner" value="Francis">
+                <label for="task">Task:</label>
+                <input type="text" id="task" name="task" class="form-control"><br><br>
+                <label></label>
+                <input type="button" id="btn_add_task" value="Add" class="btn btn-primary">
+                <br><br>
+                <div id="confirmation"></div>
+                <input type="button" id="btn_show_list" value="Go back to list" class="btn btn-primary">
+            </form>
+        </div>
+
+    <div class="col-md-2"></div>
+    </div>
+
+    <br>
+</div> <!-- container //-->
+
+<br>
+    <div class="container-fluid bg-dark text-white">
+        <div class="row">
+            <div class="col-md-12 text-center">
+            &copy; 2020 MIS2402
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+				&nbsp; <!-- place holder for additional footer content -->
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+//
+// These are the API URLS to use:
+//
+// http://ec2-3-15-38-21.us-east-2.compute.amazonaws.com/auth/
+// https://misdemo.temple.edu/todo/addtask/
+// https://misdemo.temple.edu/todo/tasks/ 
+//
+// In this specific assignment is important that you put the "/" at the end of
+// the URL.  
+
+
+// this command runs when the page is ready.... 
+$("#div-login").show();
+
+
+//supporting functions
+function login_controller(){
+    var the_serialized_data = $("#frm_login").serialize();    
+    console.log(the_serialized_data);
+    $.getJSON('http://ec2-3-15-38-21.us-east-2.compute.amazonaws.com/auth/',the_serialized_data,function(data){
+        //Step Six
+        console.log(typeof data);
+        if(typeof data == "string"){
+            $("#login_message").html(data);
+            $("#login_message").addclass("alert alert-danger");
+        }else{
+            $("#div-login").hide();
+            $("#div-list").list();
+            $("#task_owner").val(data["user_id"]);
+        }
+    });
+} //end login controller
+
+function add_task(){
+    var the_serialized_data = $("#frm_todo").serialize();    
+    console.log(the_serialized_data);
+        
+    $.post('https://misdemo.temple.edu/todo/addtask/',the_serialized_data,function(data){
+        console.log(data); 
+        $("#confirmation").html("task added OK.");
+    });
+}; //end add task
+
+function get_tasks(){
+
+    $("#tasklist").html("");
+    var the_serialized_data = $("#frm_todo").serialize();
+    console.log(the_serialized_data);
+        
+    $.getJSON('https://misdemo.temple.edu/todo/tasks/',the_serialized_data,function(data){
+        console.log(data);
+        for(var i=0;i < data.length;i++){
+            $("#tasklist").append("<li>" + data[i]["task"] + "</li>");			
+        }
+    });
+}; //end get tasks
+
+
+//click handlers
+
+$('#btn_add_task').click(function(){
+    //Step Seven
+})
+
+
+$('#btn_get_tasks').click(function(){
+    get_tasks();
+})
+
+
+$('#btn_show_list').click(function(){
+    $("#div-list").show();
+    $("#div-add").hide();
+})
+
+$('#btn_show_add').click(function(){
+    $("#div-list").hide();
+    $("#div-add").show();
+})
+
+$('#btn_login').click(function(){
+    $("#login_message").html("");
+    $("#login_message").removeClass();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    //Step Five
+if(username==""||password==""){
+    $("#login_message").html("username and password are both required");
+    $("#login_message").addclass("alert alert-danger");
+    }
+    else{
+        login_controller();
+    
+}
+})
+
+//on your own
+//Step Eight
+
+</script>
+</html>

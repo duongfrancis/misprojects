@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Nothing to change here in the <body> ... unless you want to :-)                                             * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h1>Fun with HTML</h1>
+				<input type="button" class="btn btn-primary" id="btn_1" value="Show a primary alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_2" value="Show a secondary alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_3" value="Show an information alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_4" value="Show a warning alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_5" value="Show a danger alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_6" value="Show a success alert">
+				<br><br>
+				<input type="button" class="btn btn-primary" id="btn_7" value="Remove all classes">
+				<br><br>
+				<div id="sometag">Hello world!</div>
+				<br><br>
+			</div>
+			<div class="col-md-6">
+				<h1>Make this image clickable</h1>
+				<img id="puppy1" src="images/puppy1.gif">
+				<img id="puppy2" src="images/puppy2.gif">
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+//
+// Add click events.  Add one event for each button.
+// Add a click events for the image tags as well.
+//
+
+//this line will hide the tag puppy2
+$("#puppy2").hide();
+
+
+$('#btn_1').click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-primary");
+})
+$("#btn_2").click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-secondary");
+});
+$("#btn_3").click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-info");
+});
+$("#btn_4").click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-warning");
+});
+$("#btn_5").click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-danger");
+});
+$("#btn_6").click(function(){
+	$("#sometag").removeClass();
+	$("#sometag").addClass("alert alert-success");
+});
+//tags you need
+//alert-info alert-warning alert-danger alert-success
+$("#btn_7").click(function(){
+	$("#sometag").removeClass();
+});
+$("#puppy1").click(function(){
+	$("#puppy1").hide();
+	$("#puppy2").show();
+	
+});
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- * Do not change anything within the <head></head> section of the HTML                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<style> .btn{border:1px solid black; padding:5px;display:inline-block} </style>
+</head>
+<body>
+    <!-- **************************************************************************************** -->
+    <!-- *                                                                                      * -->
+    <!-- *  Nothing to change here in the body.                                                                                  * -->
+    <!-- *                                                                                      * -->
+    <!-- **************************************************************************************** -->
+	<h1>Hello World 2</h1>
+	
+	<p>Press the following button to say "Hello".</p>
+    <p>Optionally, enter your name in the text box below for a more personal greeting.</p>
+
+	<p>What is your name? <input type="text" id="textEntered1"></p>
+
+	<p><input type="button" class="btn btn-primary" id="btn_1" value="Say Hello"></p>
+	
+	<div id="textDisplayed1"></div> 
+
+</body>
+<script>
+//
+// Write a program that prompts the user to enter their name.  Use the input tag
+// to get the user's name.  Then display the string "Hello name" 
+// (where name is the name entered by the user.)
+//
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+$('#btn_1').click(function(){
+	var your_name = $("#textEntered1").val();
+	$("#textDisplayed1").html("Hello " + your_name);
+})
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+
+</script>
+</html>
