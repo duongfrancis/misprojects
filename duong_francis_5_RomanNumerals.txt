@@ -1,0 +1,55 @@
+//
+// Write a program that prompts the user to enter a number within the range of 1
+// through 10 and displays the roman numeral version of that number. If the number 
+// is outside the range of 1 through 10, the program should display an error message.
+//
+// The following table shows the Roman numerals for the numbers 1 through 10:
+//		1 = I		4 = IV		7 = VII		10 = X
+//		2 = II		5 = V		8 = VIII
+//		3 = III		6 = VI		9 = IX
+//
+// Name your file lastname_firstname_RomanNumerals.js where lastname is 
+// your last name and first name is your first name. For example
+//
+//		Doyle_Mart_RomanNumerals.js
+//
+// Upload your file to OwlBox as directed by your instructor.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var readlineSync = require('readline-sync');
+
+var question = readlineSync.question('Enter a number 1 through 10');
+
+if (question == 1){
+console.log("I");
+}else if (question == 2){
+	console.log("II");
+}else if (question == 3){
+	console.log("III");
+}else if (question == 4){
+	console.log("IV");
+}else if (question == 5){
+	console.log("V");
+}else if (question == 6){
+	console.log("VI");
+}else if (question == 7){
+	console.log("VII");
+}else if (question == 8){
+	console.log("VIII");
+}else if (question == 9){
+	console.log("IX");
+}else if (question == 10){
+	console.log("X");
+}else if (question > 10){
+	console.log("Error must be 1 through 10");
+}
+	
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////

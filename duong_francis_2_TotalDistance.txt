@@ -1,0 +1,31 @@
+//
+// Assuming there are no accidents or delays, the distance that a car travels
+// down the interstate can be calculated with the following formula:
+//
+//	Distance=Speed * Time
+//
+// Write a program that prompts for both Speed and Time and calculates and  
+// displays the distance traveled.
+//
+// Name your file lastname_firstname_TotalDistance.js where lastname is 
+// your last name and first name is your first name. For example
+//
+//		Doyle_Mart_TotalDistance.js
+//
+// Upload your file to OwlBox as directed by your instructor.
+//
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var readlineSync = require('readline-sync');
+var speed = readlineSync.questionFloat('Enter Speed');
+var time = readlineSync.questionFloat('Enter Time');
+var distance = speed * time;
+console.log('Distance traveled is ' + distance);
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////

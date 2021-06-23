@@ -1,0 +1,42 @@
+//
+// Write a program that asks the user to enter a person's age. The program should
+// display a indicating whether the person is an infant, a child, a teenager, or 
+// an adult. Following are the guidelines:
+//
+// If the person is 1 year old or less, he or she is an infant.
+// If the person is older than 1 year, but younger than 13 years, he or she is a child.
+// If the person is at least 13 years old, but less than 20 years old, he or she is a teenager.
+// If the person is at least 20 years old, he or she is an adult.
+//
+// Name your file lastname_firstname_AgeClassifier.js where lastname is 
+// your last name and first name is your first name. For example
+//
+//		Doyle_Mart_AgeClassifier.js
+//
+// Upload your file to OwlBox as directed by your instructor.
+//
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var readlineSync = require('readline-sync');
+
+var question = readlineSync.question('What is your age?');
+
+if (question <= 1){
+console.log("Infant");
+}else if (question > 1 && question < 13){
+	console.log("Child")
+}else if (question = 13 && question < 20){
+	console.log("Teenager")
+}else if (question = 20){
+	console.log("Adult")
+}
+
+	
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////

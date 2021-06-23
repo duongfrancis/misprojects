@@ -1,0 +1,35 @@
+//
+// A customer in a store is purchasing five items. Write a program that asks
+// for the price of each item, then displays the subtotal of the sale, the 
+// amount of sales tax, and the total. Assume the sales tax is 7 percent.
+//
+// Name your file lastname_firstname_TotalPurchases.js where lastname is 
+// your last name and first name is your first name. For example
+//
+//		Doyle_Mart_TotalPurchase.js
+//
+// Upload your file to OwlBox as directed by your instructor.
+//
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the next comment block.  Do not alter     //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
+var readlineSync = require('readline-sync');
+var total = readlineSync.questionFloat('What is the price of item one?');
+var total2 = readlineSync.questionFloat('What is the price of item two?');
+var total3 = readlineSync.questionFloat('What is the price of item three?');
+var total4 = readlineSync.questionFloat('What is the price of item four?');
+var total5 = readlineSync.questionFloat('What is the price of item five?');
+var subtotal = total + total2 + total3 + total4 + total5;
+var salestax = subtotal * 0.07;
+var salestaxandtotal = subtotal + salestax;
+
+console.log("Subtotal is " + subtotal)
+console.log("Tax is " + salestax)
+console.log("Total is " + salestaxandtotal)
+
+/////////////////////////////////////////////////////////////////////////////////
+// Insert your code between here and the previous comment block.  Do not alter //
+// any code in any other part of this file.                                    //
+/////////////////////////////////////////////////////////////////////////////////
